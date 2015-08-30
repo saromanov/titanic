@@ -24,7 +24,9 @@ def load_test():
 
 
 def nn(X, y, Xtest, ytest):
-    print("THis is shape: ", X.shape, y.shape, np.max(y)+1)
+    '''
+     MLP model
+    '''
     y = np_utils.to_categorical(y, np.max(y)+1)
     ytest = np_utils.to_categorical(ytest, np.max(y)+1)
     model = Sequential()
@@ -41,6 +43,8 @@ def nn(X, y, Xtest, ytest):
     print('Test score: ', score[0])
 
 def rf(X,y, xtest, ytest):
+    ''' Random forest model with preprocessing and grid search
+    '''
     anova_pre = SelectKBest(f_regression, k=8)
     model = Pipeline([
         ('inp', preprocessing.Imputer(strategy='mean', missing_values=-1)),
